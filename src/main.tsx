@@ -15,7 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         clientId={clientId}
         authorizationParams={{
             redirect_uri: redirectUri,
-            audience: audience
+            audience: audience,
+            returnTo: window.location.origin
         }}
     >
     <Router />
