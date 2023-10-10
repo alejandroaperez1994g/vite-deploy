@@ -35,3 +35,19 @@ export const uploadRequest = async (getToken: GetAccessTokenFunction, file: File
     const data = await response.json();
     console.log(data);
 }
+
+export const uploadRequestBase64 = async (getToken: GetAccessTokenFunction, file: string) => {
+    const {VITE_API_URL: url} = import.meta.env
+    const token = await getToken();
+
+    const response = await fetch(`${url}/base`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ image: file })
+    });
+    const data = await response.json();
+    console.log(data);
+}
